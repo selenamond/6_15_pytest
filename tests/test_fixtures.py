@@ -11,6 +11,7 @@ def desktop_browser(request):
     browser.config.base_url = 'https://github.com'
     browser.config.window_width = request.param[0]
     browser.config.window_height = request.param[1]
+    browser.config.timeout = 6
     yield browser
     browser.quit()
 
