@@ -5,12 +5,13 @@ import pytest
 from selene import browser, have
 
 
-@pytest.fixture(scope='function', autouse=True,
+@pytest.fixture(scope='function', autouse=False,
                 params=[(1920, 1080), (375, 667)])
 def browser_manager(request):
     browser.config.base_url = 'https://github.com'
     browser.config.window_width = request.param[0]
     browser.config.window_height = request.param[1]
+    browser.config.timeout = 6
     yield browser
     browser.quit()
 
